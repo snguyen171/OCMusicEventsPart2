@@ -17,6 +17,13 @@ public class EventDetailsActivity extends AppCompatActivity {
 
     private ImageView eventImageView;
     private TextView eventTitleTextView;
+    private TextView eventDateDayTextView;
+    private TextView eventTimeTextView;
+    private TextView eventLocationTextView;
+    private TextView eventAddress1TextView;
+    private TextView eventAddress2TextView;
+
+
     // In order to use AssetManager, need to know Context
     private Context context = (Context) this;
 
@@ -28,20 +35,37 @@ public class EventDetailsActivity extends AppCompatActivity {
         // Get the data from Intent
         Intent detailsIntent = getIntent();
         String title = detailsIntent.getStringExtra("Title");
-        String date = detailsIntent.getStringExtra("Date");
-        String day = detailsIntent.getStringExtra("Day");
+        String date = detailsIntent.getStringExtra("Date") + " - " +
+                detailsIntent.getStringExtra("Day");
+        String time = detailsIntent.getStringExtra("Time");
         String location = detailsIntent.getStringExtra("Location");
         String address1 = detailsIntent.getStringExtra("Address1");
         String address2 = detailsIntent.getStringExtra("Address2");
         //String details = detailsIntent.getStringExtra("Details");
-        String imageFileName = title.replace(" ", "") + ".jpeg";
+        String imageFileName = detailsIntent.getStringExtra("ImageName");;
+
+
 
         eventImageView = (ImageView) findViewById(R.id.eventImageView);
+
         eventTitleTextView = (TextView) findViewById(R.id.eventTitleTextView);
+        eventDateDayTextView = (TextView) findViewById(R.id.eventDateDayTextView);
+        eventTimeTextView = (TextView) findViewById(R.id.eventTimeTextView);
+        eventLocationTextView = (TextView) findViewById(R.id.eventLocationTextView);
+        eventAddress1TextView = (TextView) findViewById(R.id.eventAddress1TextView);
+        eventAddress2TextView = (TextView) findViewById(R.id.eventAddress2TextView);
+
 
         // Load the image from the Assets folder using the AssetManger class
         AssetManager am = context.getAssets();
         // Try to load the image file
+
+        eventTitleTextView.setText(title);
+        eventDateDayTextView.setText(date);
+        eventTimeTextView.setText(time);
+        eventLocationTextView.setText(location);
+        eventAddress1TextView.setText(address1);
+        eventAddress2TextView.setText(address2);
         try
         {
             InputStream stream = am.open(imageFileName);

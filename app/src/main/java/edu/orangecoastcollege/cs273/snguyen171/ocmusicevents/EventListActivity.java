@@ -44,17 +44,20 @@ public class EventListActivity extends ListActivity {
         String title = clickedEvent.getTitle();
         String date = clickedEvent.getDate();
         String day = clickedEvent.getDay();
+        String time = clickedEvent.getTime();
         String location = clickedEvent.getLocation();
         String address1 = clickedEvent.getAddress1();
         String address2 = clickedEvent.getAddress2();
+        String imageName = clickedEvent.getImageName();
 
         detailsIntent.putExtra("Title", title);
         detailsIntent.putExtra("Date", date);
         detailsIntent.putExtra("Day", day);
+        detailsIntent.putExtra("Time", time);
         detailsIntent.putExtra("Location", location);
         detailsIntent.putExtra("Address1", address1);
         detailsIntent.putExtra("Address2", address2);
-
+        detailsIntent.putExtra("ImageName", imageName);
         startActivity(detailsIntent);
         // 1) Get the position, get the title, get the details
         // 2) Make a new Intent
